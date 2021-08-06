@@ -1,30 +1,33 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Navbar :planets="planets" />
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
+<script>
+import Navbar from "./components/Navbar.vue";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: "App",
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      planets: [],
+    };
+  },
+  mounted() {
+    this.fetchLocalData();
+  },
+  methods: {
+    fetchLocalData() {
+      fetch("./response.json")
+        .then((res) => res.json())
+        .then((data) => (this.planets = data))
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
+  },
+};
+</script>
