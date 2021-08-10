@@ -1,5 +1,9 @@
 <template>
-  <Navbar :planets="planets" />
+  <Navbar :planets="planets" @clicked="onClickChild" />
+  <!-- <router-view :key="$route.path" :planets="planets" /> -->
+  <router-view :key="$route.path" :filteredPlanet="filteredPlanet" />
+
+  <!-- <Planet :planets="planets" /> -->
 </template>
 
 
@@ -14,12 +18,17 @@ export default {
   data() {
     return {
       planets: [],
+      filteredPlanet: {},
     };
   },
   mounted() {
     this.fetchLocalData();
   },
   methods: {
+    onClickChild(value) {
+      // console.log("onclickchildvalue=", value);
+      this.filteredPlanet = value;
+    },
     fetchLocalData() {
       fetch("./response.json")
         .then((res) => res.json())

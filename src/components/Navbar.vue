@@ -1,9 +1,32 @@
 <template>
-  <nav>
-    <h1>the planets</h1>
-    <ul>
-      <li v-for="planet in planets" :key="planet.name">
-        <router-link :to="planet.name">{{ planet.name }}</router-link>
+  <nav class="flex items-center p-5 uppercase border-b border-gray-600">
+    <div class="w-1/4">
+      <router-link :to="{ name: 'Home' }">
+        <h1 class="text-2xl">the planets</h1>
+      </router-link>
+    </div>
+
+    <ul class="w-screen text-right">
+      <li
+        v-for="planet in planets"
+        :key="planet.name"
+        class="text-xs px-5 text-gray-400 font-bold"
+        @click="onClickButton(planet)"
+      >
+        <!-- <router-link
+          :to="{ name: 'PlanetDetails', params: { id: planet.name } }"
+          >{{ planet.name }}</router-link
+        > -->
+        <!-- :to="planet.name" -->
+        <router-link
+          :to="{
+            name: 'PlanetDetails',
+            params: { id: planet.name },
+          }"
+        >
+          <!--  params: { id: planet.name }, -->
+          {{ planet.name }}
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -15,7 +38,12 @@ export default {
   props: {
     planets: Array,
   },
-  mounted() {},
+  methods: {
+    onClickButton(event) {
+      // console.log(event);
+      this.$emit("clicked", event);
+    },
+  },
 };
 </script>
 
@@ -23,6 +51,8 @@ export default {
 h1,
 li {
   display: inline;
-  padding: 10px;
+}
+h1 {
+  font-family: var(--fontHeadline);
 }
 </style>

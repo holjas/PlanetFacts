@@ -3,3 +3,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=Spartan:wght@400;700&display=swap");
+
+:root {
+  --white: rgb(255, 255, 255);
+  --black: rgb(7, 7, 36); /*default button color*/
+  --darkGrey: rgb(56, 56, 79); /*hover button color*/
+  --lightGrey: rgb(131, 131, 145);
+  --teal: rgb(65, 158, 187); /*active button color*/
+  --yellow: rgb(237, 162, 73);
+  --purple: rgb(109, 46, 213); /*selected button color*/
+  --mediumOrange: rgb(209, 76, 50);
+  --darkOrange: rgb(205, 81, 32);
+  --red: rgb(216, 58, 52);
+  --green: rgb(30, 193, 162);
+  --blue: rgb(45, 104, 240);
+  --fontHeadline: "Antonio", sans-serif;
+  --fontBody: "Spartan", sans-serif;
+}
+/* h1 = antonio medium 80px, 103px line */
+/* h2 = antonio medium 40px, 52px line, -1.5spacing*/
+/* h3 = spartan bold, 12px, 25px line, 2.6 spacing */
+/* h4 = spartan bold, 11px, 25px line, 1. spacing */
+/* p = spartan regular, 14px, 25px line */
+
+body {
+  color: var(--white);
+  background: var(--black) url("./assets/background-stars.svg");
+  font-family: var(--fontBody);
+}
