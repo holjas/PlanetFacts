@@ -1,8 +1,10 @@
 <template>
   <div :key="id">
     <h2>SELECTED PLANET: {{ id }}</h2>
+
+    <p>FilteredPlanet: {{ filteredPlanet.name }}</p>
+    <p>FilteredPlanet radius: {{ filteredPlanet.radius }}</p>
   </div>
-  <p>FilteredPlanet: {{ filteredPlanet.name }}</p>
 </template>
 
 <script>
