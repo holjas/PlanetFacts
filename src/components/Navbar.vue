@@ -11,20 +11,14 @@
         v-for="planet in planets"
         :key="planet.name"
         class="text-xs px-5 text-gray-400 font-bold"
-        @click="onClickButton(planet)"
+        @click="captureSelection(planet)"
       >
-        <!-- <router-link
-          :to="{ name: 'PlanetDetails', params: { id: planet.name } }"
-          >{{ planet.name }}</router-link
-        > -->
-        <!-- :to="planet.name" -->
         <router-link
           :to="{
             name: 'PlanetDetails',
             params: { id: planet.name },
           }"
         >
-          <!--  params: { id: planet.name }, -->
           {{ planet.name }}
         </router-link>
       </li>
@@ -39,8 +33,7 @@ export default {
     planets: Array,
   },
   methods: {
-    onClickButton(event) {
-      // console.log(event);
+    captureSelection(event) {
       this.$emit("clicked", event);
     },
   },
