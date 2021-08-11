@@ -2,7 +2,7 @@
   <nav class="flex items-center p-5 uppercase border-b border-gray-600">
     <div class="w-1/4">
       <router-link :to="{ name: 'Home' }">
-        <h1 class="text-2xl">the planets</h1>
+        <h2>the planets</h2>
       </router-link>
     </div>
 
