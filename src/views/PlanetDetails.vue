@@ -1,28 +1,23 @@
 <template>
   <section :key="id" class="wrapper">
     <div class="flex h-auto">
-      <div class="w-7/12">
+      <div class="w-7/12 pt-6">
         <!--v-if="somethingIsTrue/False"  -->
         <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
       </div>
 
-      <div class="w-5/12 flex flex-col">
+      <div class="w-5/12 p-3 flex flex-col">
         <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
         <p>{{ filteredPlanet.overview.content }}</p>
         <p class="mt-5 mb-7">
           <span class="text-gray-600 pr-2">Source </span>
           <span class="text-gray-500 underline font-bold">Wikipedia</span>
+          <i class="fas fa-external-link-square-alt text-gray-500 pl-2"></i>
         </p>
 
-        <button class="my-2">
-          <span class="text-gray-400 pl-3 pr-6">01</span>overview
-        </button>
-        <button>
-          <span class="text-gray-400 pr-3">02</span>internal structure
-        </button>
-        <button>
-          <span class="text-gray-400 pr-3">03</span>surface geology
-        </button>
+        <button><span>01</span>overview</button>
+        <button><span>02</span>internal structure</button>
+        <button><span>03</span>surface geology</button>
       </div>
     </div>
     <div class="flex justify-evenly p-5">
