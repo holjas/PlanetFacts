@@ -1,15 +1,15 @@
 <template>
   <section :key="id" class="wrapper">
-    <div class="flex h-auto sm:flex-wrap xl:flex-nowrap">
-      <div class="pt-6 w-full flex justify-center items-center">
+    <div class="flex h-auto xs:flex-wrap xl:flex-nowrap">
+      <div class="pt-6 w-full flex justify-center items-center xs:mb-6">
         <!--v-if="somethingIsTrue/False"  -->
         <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
       </div>
       <!-- side bar details -->
-      <div class="flex sm:flex-row sm:p-6 xl:flex-col xl:w-6/12 xl:p-3">
-        <div class="sm:w-8/12 xl:w-full">
-          <h1 class="xl:mb-6">{{ filteredPlanet.name }}</h1>
-          <p class="sm:mt-6">{{ filteredPlanet.overview.content }}</p>
+      <div class="flex xs:flex-row xs:p-6 xs:mt-6 xl:flex-col xl:w-6/12 xl:p-3">
+        <div class="xs:w-8/12 xl:w-full">
+          <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
+          <p class="xs:mt-6">{{ filteredPlanet.overview.content }}</p>
           <p class="mt-5 mb-7">
             <span class="text-gray-600 pr-2">Source </span>
             <span class="text-gray-500 underline font-bold">
@@ -24,9 +24,9 @@
         <div
           class="
             flex flex-col
-            sm:w-4/12
-            sm:mx-6
-            sm:justify-center
+            xs:w-4/12
+            xs:mx-6
+            xs:justify-center
             xl:w-full
             xl:mx-0
           "
@@ -91,6 +91,7 @@ export default {
 }
 
 /* responsive colors
+  xs:bg-yellow-200
 sm:bg-red-200
         md:bg-blue-200
         lg:bg-green-200
