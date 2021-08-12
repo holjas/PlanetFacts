@@ -51,6 +51,6 @@ export default {
 
 <style scoped>
 a.router-link-active {
-  border-bottom: 4px var(--purple) solid;
+  border-bottom: 2px var(--purple) solid;
 }
 </style>

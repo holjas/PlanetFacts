@@ -1,10 +1,13 @@
 <template>
   <section :key="id" class="wrapper">
+    <!--  -->
+    <!--  -->
+    <!--  -->
     <div class="flex h-auto xs:flex-wrap xl:flex-nowrap">
       <div class="pt-6 w-full flex justify-center items-center xs:mb-6">
-        <!--v-if="somethingIsTrue/False"  -->
         <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
       </div>
+
       <!-- side bar details -->
       <div class="flex xs:flex-row xs:p-6 xs:mt-6 xl:flex-col xl:w-6/12 xl:p-3">
         <div class="xs:w-8/12 xl:w-full">
@@ -31,9 +34,15 @@
             xl:mx-0
           "
         >
-          <button><span>01</span>overview</button>
-          <button><span>02</span>internal structure</button>
-          <button><span>03</span>surface geology</button>
+          <button @click="toggleDetailView" name="overview">
+            <span>01</span>overview
+          </button>
+          <button @click="toggleDetailView" name="structure">
+            <span>02</span>internal structure
+          </button>
+          <button @click="toggleDetailView" name="geology">
+            <span>03</span>surface geology
+          </button>
         </div>
       </div>
     </div>
@@ -66,14 +75,28 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      activePlanet: {},
+      activeClass: "overview",
+      testclass: "",
     };
   },
+  components: {},
   props: {
     planets: Array,
   },
   computed: {
     filteredPlanet() {
-      return this.planets.find((x) => x.name === this.$route.params.id);
+      const activePlanet = this.planets.find(
+        (x) => x.name === this.$route.params.id
+      );
+      this.activePlanet = activePlanet;
+      return activePlanet;
+    },
+  },
+  methods: {
+    toggleDetailView(e) {
+      const planetInfo = e.target.name;
+      this.activeClass = planetInfo;
     },
   },
   // updated() {
@@ -83,9 +106,6 @@ export default {
 </script>
 
 <style scoped>
-.w-720 {
-  width: 720px;
-}
 .overviewContainer {
   @apply flex-col w-3/12 border border-gray-600 py-5 pl-5 m-2 pr-12 uppercase text-xs font-bold;
 }

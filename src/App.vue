@@ -8,6 +8,7 @@
       leave-active-class="animate__animated animate__fadeOut animate__faster"
       mode="out-in"
     >
+      <!-- params get passed here, instead of in <router-view> -->
       <component :is="Component" :planets="planets" :key="$route.path" />
     </transition>
   </router-view>
