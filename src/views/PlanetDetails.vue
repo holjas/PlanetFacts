@@ -1,21 +1,28 @@
 <template>
-  <section :key="id">
+  <section :key="id" class="wrapper">
     <div class="flex h-auto">
-      <div class="w-8/12">
+      <div class="w-7/12">
         <!--v-if="somethingIsTrue/False"  -->
-        <h1 class="font-bold">imagehere</h1>
+        <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
       </div>
 
-      <div class="w-4/12 flex flex-col">
+      <div class="w-5/12 flex flex-col">
         <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
         <p>{{ filteredPlanet.overview.content }}</p>
-        <p class="mt-3">
+        <p class="mt-5 mb-7">
           <span class="text-gray-600 pr-2">Source </span>
           <span class="text-gray-500 underline font-bold">Wikipedia</span>
         </p>
-        <button>overview</button>
-        <button>internal structure</button>
-        <button>surface geology</button>
+
+        <button class="my-2">
+          <span class="text-gray-400 pl-3 pr-6">01</span>overview
+        </button>
+        <button>
+          <span class="text-gray-400 pr-3">02</span>internal structure
+        </button>
+        <button>
+          <span class="text-gray-400 pr-3">03</span>surface geology
+        </button>
       </div>
     </div>
     <div class="flex justify-evenly p-5">
@@ -49,7 +56,15 @@ export default {
     };
   },
   props: {
-    filteredPlanet: Object,
+    planets: Array,
   },
+  computed: {
+    filteredPlanet() {
+      return this.planets.find((x) => x.name === this.$route.params.id);
+    },
+  },
+  // updated() {
+  //   console.log("XPLANET", this.filterePlanet);
+  // },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center p-5 uppercase border-b border-gray-600">
+  <nav class="flex items-center p-5 uppercase border-b border-gray-600 wrapper">
     <div class="w-1/4">
       <router-link :to="{ name: 'Home' }">
         <h2>the planets</h2>
@@ -10,8 +10,7 @@
       <li
         v-for="planet in planets"
         :key="planet.name"
-        class="text-xs px-5 text-gray-400 font-bold"
-        @click="captureSelection(planet)"
+        class="text-xs font-bold px-5 text-gray-400"
       >
         <router-link
           :to="{
@@ -31,11 +30,6 @@ export default {
   name: "Navbar",
   props: {
     planets: Array,
-  },
-  methods: {
-    captureSelection(event) {
-      this.$emit("clicked", event);
-    },
   },
 };
 </script>

@@ -31,10 +31,9 @@
 body {
   color: var(--white);
   background: var(--black) url("./assets/background-stars.svg");
+  font-family: var(--fontBody);
 }
 section {
-  max-width: 1260px;
-  margin: 0 auto;
   padding: 120px;
 }
 h1,
@@ -51,18 +50,20 @@ h2 {
   line-height: 52px;
   letter-spacing: -1.5px;
 }
+
 p {
-  @apply text-sm leading-6;
-  font-family: var(--fontBody);
+  @apply leading-7;
 }
 
 button {
-  @apply text-white uppercase text-sm py-3 px-4 border m-2;
+  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-3;
   background-color: var(--purple);
+  font-family: var(--fontBody);
+}
+.wrapper {
+  max-width: 1260px;
+  margin: 0 auto;
 }
 .overviewContainer {
   @apply flex-col w-2/12 border border-gray-600 py-5 pl-5 pr-12 uppercase text-xs font-bold;
-}
-.overview {
-  /* @apply uppercase text-xs font-bold; */
 }

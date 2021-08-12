@@ -1,7 +1,7 @@
 <template>
-  <Navbar :planets="planets" @clicked="onSelection" />
+  <Navbar :planets="planets" />
 
-  <router-view :key="$route.path" :filteredPlanet="filteredPlanet" />
+  <router-view :key="$route.path" :planets="planets" />
 </template>
 
 
@@ -16,16 +16,12 @@ export default {
   data() {
     return {
       planets: [],
-      filteredPlanet: {},
     };
   },
-  mounted() {
+  created() {
     this.fetchLocalData();
   },
   methods: {
-    onSelection(value) {
-      this.filteredPlanet = value;
-    },
     fetchLocalData() {
       fetch("./response.json")
         .then((res) => res.json())
