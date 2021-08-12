@@ -1,32 +1,44 @@
 <template>
   <section :key="id" class="wrapper">
-    <div class="flex h-auto">
-      <div class="w-full pt-6">
+    <div class="flex h-auto sm:flex-wrap xl:flex-nowrap">
+      <div class="pt-6 w-full flex justify-center items-center">
         <!--v-if="somethingIsTrue/False"  -->
         <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
       </div>
       <!-- side bar details -->
-      <div class="sidebar p-3 flex flex-col">
-        <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
-        <p>{{ filteredPlanet.overview.content }}</p>
-        <p class="mt-5 mb-7">
-          <span class="text-gray-600 pr-2">Source </span>
-          <span class="text-gray-500 underline font-bold">
-            <a :href="filteredPlanet.overview.source" target="_blank">
-              Wikipedia
+      <div class="flex sm:flex-row sm:p-6 xl:flex-col xl:w-6/12 xl:p-3">
+        <div class="sm:w-8/12 xl:w-full">
+          <h1 class="xl:mb-6">{{ filteredPlanet.name }}</h1>
+          <p class="sm:mt-6">{{ filteredPlanet.overview.content }}</p>
+          <p class="mt-5 mb-7">
+            <span class="text-gray-600 pr-2">Source </span>
+            <span class="text-gray-500 underline font-bold">
+              <a :href="filteredPlanet.overview.source" target="_blank">
+                Wikipedia
 
-              <i class="fas fa-external-link-square-alt pl-2"></i>
-            </a>
-          </span>
-        </p>
-
-        <button><span>01</span>overview</button>
-        <button><span>02</span>internal structure</button>
-        <button><span>03</span>surface geology</button>
+                <i class="fas fa-external-link-square-alt pl-2"></i>
+              </a>
+            </span>
+          </p>
+        </div>
+        <div
+          class="
+            flex flex-col
+            sm:w-4/12
+            sm:mx-6
+            sm:justify-center
+            xl:w-full
+            xl:mx-0
+          "
+        >
+          <button><span>01</span>overview</button>
+          <button><span>02</span>internal structure</button>
+          <button><span>03</span>surface geology</button>
+        </div>
       </div>
     </div>
     <!-- box details start -->
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-5">
       <div class="overviewContainer">
         <h4>rotation time</h4>
         <h2>
@@ -71,10 +83,17 @@ export default {
 </script>
 
 <style scoped>
-.sidebar {
+.w-720 {
   width: 720px;
 }
 .overviewContainer {
   @apply flex-col w-3/12 border border-gray-600 py-5 pl-5 m-2 pr-12 uppercase text-xs font-bold;
 }
+
+/* responsive colors
+sm:bg-red-200
+        md:bg-blue-200
+        lg:bg-green-200
+        xl:bg-orange-200
+         */
 </style>
