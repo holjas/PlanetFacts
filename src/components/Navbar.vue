@@ -37,11 +37,4 @@ export default {
 </script>
 
 <style scoped>
-h1,
-li {
-  display: inline;
-}
-h1 {
-  font-family: var(--fontHeadline);
-}
 </style>

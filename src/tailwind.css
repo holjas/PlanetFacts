@@ -34,7 +34,7 @@ body {
   font-family: var(--fontBody);
 }
 section {
-  padding: 120px;
+  padding: 120px 20px;
 }
 h1,
 h2 {
@@ -45,12 +45,27 @@ h1 {
   font-size: 80px;
   line-height: 103px;
 }
+h1,
+li {
+  display: inline;
+}
 h2 {
   font-size: 40px;
   line-height: 52px;
   letter-spacing: -1.5px;
+  text-transform: uppercase;
 }
-
+h4 {
+  @apply text-gray-400 font-bold;
+  font-family: var(--fontBody);
+  line-height: 25px;
+}
+h3 {
+  @apply text-gray-400 font-bold;
+  font-family: var(--fontBody);
+  line-height: 25px;
+  letter-spacing: 2.6px;
+}
 p {
   @apply leading-7;
 }
@@ -60,17 +75,10 @@ button {
   background-color: var(--purple);
   font-family: var(--fontBody);
 }
-button span,
-.overviewContainer p:first-child {
+button span {
   @apply text-gray-400 font-normal pl-3 pr-6;
 }
 .wrapper {
   max-width: 1300px;
   margin: 0 auto;
-}
-.overviewContainer {
-  @apply flex-col w-2/12 border border-gray-600 py-5 pl-5 pr-12 uppercase text-xs font-bold;
-}
-.overviewContainer p:first-child {
-  @apply font-bold;
 }
