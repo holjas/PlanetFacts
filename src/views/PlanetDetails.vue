@@ -119,15 +119,18 @@ export default {
       if (e === "overview") {
         this.planetOverview = this.filteredPlanet.overview.content;
         this.planetImage = this.filteredPlanet.images.planet;
+        this.planetURL = this.filteredPlanet.overview.source;
       }
       if (e === "structure") {
         this.planetOverview = this.filteredPlanet.structure.content;
         this.planetImage = this.filteredPlanet.images.internal;
+        this.planetURL = this.filteredPlanet.structure.source;
       }
       if (e === "geology") {
         this.planetOverview = this.filteredPlanet.geology.content;
         this.planetImage = this.filteredPlanet.images.planet;
         this.planetImageGeology = this.filteredPlanet.images.geology;
+        this.planetURL = this.filteredPlanet.geology.source;
       }
     },
   },
@@ -135,6 +138,7 @@ export default {
     this.planetOverview = this.filteredPlanet.overview.content;
     this.planetImage = this.filteredPlanet.images.planet;
     this.planetImageGeology = this.filteredPlanet.images.geology;
+    this.planetURL = this.filteredPlanet.overview.source;
   },
 };
 </script>
