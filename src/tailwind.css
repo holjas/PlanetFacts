@@ -70,14 +70,6 @@ p {
   @apply leading-7;
 }
 
-button {
-  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2;
-  background-color: var(--purple);
-  font-family: var(--fontBody);
-}
-button span {
-  @apply text-gray-400 font-normal pl-3 pr-6;
-}
 .wrapper {
   max-width: 1300px;
   margin: 0 auto;

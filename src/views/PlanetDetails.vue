@@ -42,13 +42,25 @@
             xl:mx-0
           "
         >
-          <button @click="toggleDetailView" name="overview">
+          <button
+            @click="toggleDetailView"
+            name="overview"
+            :class="[activeClass === 'overview' ? 'btn-active' : '']"
+          >
             <span>01</span>overview
           </button>
-          <button @click="toggleDetailView" name="structure">
+          <button
+            @click="toggleDetailView"
+            name="structure"
+            :class="[activeClass === 'structure' ? 'btn-active' : '']"
+          >
             <span>02</span>internal structure
           </button>
-          <button @click="toggleDetailView" name="geology">
+          <button
+            @click="toggleDetailView"
+            name="geology"
+            :class="[activeClass === 'geology' ? 'btn-active' : '']"
+          >
             <span>03</span>surface geology
           </button>
         </div>
@@ -86,7 +98,6 @@ export default {
       activeClass: "overview",
     };
   },
-  components: {},
   props: {
     planets: Array,
   },
@@ -95,7 +106,6 @@ export default {
       const activePlanet = this.planets.find(
         (x) => x.name === this.$route.params.id
       );
-      console.log("computed filteredplanet, fired");
       return activePlanet;
     },
   },
@@ -106,19 +116,15 @@ export default {
       this.whatClassAmI(planetInfo);
     },
     whatClassAmI(e) {
-      console.log("what Class am I function, fired");
       if (e === "overview") {
-        console.log("show me overview");
         this.planetOverview = this.filteredPlanet.overview.content;
         this.planetImage = this.filteredPlanet.images.planet;
       }
       if (e === "structure") {
-        console.log("show me structure");
         this.planetOverview = this.filteredPlanet.structure.content;
         this.planetImage = this.filteredPlanet.images.internal;
       }
       if (e === "geology") {
-        console.log("show me geology");
         this.planetOverview = this.filteredPlanet.geology.content;
         this.planetImage = this.filteredPlanet.images.planet;
         this.planetImageGeology = this.filteredPlanet.images.geology;
@@ -130,12 +136,6 @@ export default {
     this.planetImage = this.filteredPlanet.images.planet;
     this.planetImageGeology = this.filteredPlanet.images.geology;
   },
-  // updated() {
-  //   this.whatClassAmI(this.activePlanet);
-  //   console.log("updated, fired");
-  // },
-  //if active class == overview, than {{}} is filtered.images.overview
-  //if active class == structure, than {{}} is filtered.images.structure
 };
 </script>
 
@@ -143,7 +143,17 @@ export default {
 .overviewContainer {
   @apply flex-col w-3/12 border border-gray-600 py-5 pl-5 m-2 pr-12 uppercase text-xs font-bold;
 }
-
+button {
+  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2 border border-gray-600;
+  background: transparent;
+  font-family: var(--fontBody);
+}
+.btn-active {
+  background-color: var(--purple);
+}
+button span {
+  @apply text-gray-400 font-normal pl-3 pr-6;
+}
 /* responsive colors
   xs:bg-yellow-200
 sm:bg-red-200
