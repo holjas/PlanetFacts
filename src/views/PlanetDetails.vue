@@ -1,18 +1,26 @@
 <template>
-  <section :key="id" class="wrapper">
+  <section :key="id + activeClass" class="wrapper">
     <!--  -->
     <!--  -->
     <!--  -->
     <div class="flex h-auto xs:flex-wrap xl:flex-nowrap">
       <div class="pt-6 w-full flex justify-center items-center xs:mb-6">
-        <img :src="require(`../assets/${filteredPlanet.images.planet}`)" />
+        <!-- <img :src="require(`../assets/${filteredPlanet.images.planet}`)" /> -->
+        <img :src="require(`../assets/${planetImage}`)" />
+        <img
+          :src="require(`../assets/${planetImageGeology}`)"
+          v-show="activeClass === 'geology'"
+          class="w-40 transform -rotate-45 translate-y-36 -translate-x-16"
+        />
       </div>
 
       <!-- side bar details -->
       <div class="flex xs:flex-row xs:p-6 xs:mt-6 xl:flex-col xl:w-6/12 xl:p-3">
         <div class="xs:w-8/12 xl:w-full">
+          <!-- <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
+          <p class="xs:mt-6">{{ filteredPlanet.overview.content }}</p> -->
           <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
-          <p class="xs:mt-6">{{ filteredPlanet.overview.content }}</p>
+          <p class="xs:mt-6">{{ planetOverview }}</p>
           <p class="mt-5 mb-7">
             <span class="text-gray-600 pr-2">Source </span>
             <span class="text-gray-500 underline font-bold">
@@ -75,9 +83,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      activePlanet: {},
       activeClass: "overview",
-      testclass: "",
     };
   },
   components: {},
@@ -89,7 +95,7 @@ export default {
       const activePlanet = this.planets.find(
         (x) => x.name === this.$route.params.id
       );
-      this.activePlanet = activePlanet;
+      console.log("computed filteredplanet, fired");
       return activePlanet;
     },
   },
@@ -97,11 +103,39 @@ export default {
     toggleDetailView(e) {
       const planetInfo = e.target.name;
       this.activeClass = planetInfo;
+      this.whatClassAmI(planetInfo);
+    },
+    whatClassAmI(e) {
+      console.log("what Class am I function, fired");
+      if (e === "overview") {
+        console.log("show me overview");
+        this.planetOverview = this.filteredPlanet.overview.content;
+        this.planetImage = this.filteredPlanet.images.planet;
+      }
+      if (e === "structure") {
+        console.log("show me structure");
+        this.planetOverview = this.filteredPlanet.structure.content;
+        this.planetImage = this.filteredPlanet.images.internal;
+      }
+      if (e === "geology") {
+        console.log("show me geology");
+        this.planetOverview = this.filteredPlanet.geology.content;
+        this.planetImage = this.filteredPlanet.images.planet;
+        this.planetImageGeology = this.filteredPlanet.images.geology;
+      }
     },
   },
+  created() {
+    this.planetOverview = this.filteredPlanet.overview.content;
+    this.planetImage = this.filteredPlanet.images.planet;
+    this.planetImageGeology = this.filteredPlanet.images.geology;
+  },
   // updated() {
-  //   console.log("XPLANET", this.filterePlanet);
+  //   this.whatClassAmI(this.activePlanet);
+  //   console.log("updated, fired");
   // },
+  //if active class == overview, than {{}} is filtered.images.overview
+  //if active class == structure, than {{}} is filtered.images.structure
 };
 </script>
 
