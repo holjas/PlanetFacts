@@ -148,7 +148,8 @@ export default {
   @apply flex-col w-3/12 border border-gray-600 py-5 pl-5 m-2 pr-12 uppercase text-xs font-bold;
 }
 button {
-  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2 border border-gray-600;
+  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2 border border-gray-600 rounded-sm
+  hover:bg-purple-700 transition duration-300;
   background: transparent;
   font-family: var(--fontBody);
 }
