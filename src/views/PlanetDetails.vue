@@ -1,8 +1,5 @@
 <template>
   <section :key="id + activeClass" class="wrapper">
-    <!--  -->
-    <!--  -->
-    <!--  -->
     <div class="flex h-auto xs:flex-wrap xl:flex-nowrap">
       <div class="pt-6 w-full flex justify-center items-center xs:mb-6">
         <!-- <img :src="require(`../assets/${filteredPlanet.images.planet}`)" /> -->
@@ -16,10 +13,10 @@
 
       <!-- side bar details -->
       <div class="flex xs:flex-row xs:p-6 xs:mt-6 xl:flex-col xl:w-6/12 xl:p-3">
-        <div class="xs:w-8/12 xl:w-full">
-          <!-- <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
-          <p class="xs:mt-6">{{ filteredPlanet.overview.content }}</p> -->
-          <h1 class="mb-6">{{ filteredPlanet.name }}</h1>
+        <div class="xs:w-full md:w-8/12 xl:w-full">
+          <h1 class="mb-6">
+            {{ filteredPlanet.name }}
+          </h1>
           <p class="xs:mt-6">{{ planetOverview }}</p>
           <p class="mt-5 mb-7">
             <span class="text-gray-600 pr-2">Source </span>
@@ -32,6 +29,7 @@
             </span>
           </p>
         </div>
+
         <div
           class="
             flex flex-col
@@ -40,6 +38,8 @@
             xs:justify-center
             xl:w-full
             xl:mx-0
+            xs:hidden
+            md:flex
           "
         >
           <button
@@ -67,24 +67,24 @@
       </div>
     </div>
     <!-- box details start -->
-    <div class="flex justify-between mt-5">
+    <div class="flex flex-col w-full md:flex-row justify-between mt-5">
       <div class="overviewContainer">
-        <h4>rotation time</h4>
-        <h2>
+        <h4 class="overviewText">rotation time</h4>
+        <h2 class="overviewText">
           {{ filteredPlanet.rotation }}
         </h2>
       </div>
       <div class="overviewContainer">
-        <h4>revolution time</h4>
-        <h2>{{ filteredPlanet.revolution }}</h2>
+        <h4 class="overviewText">revolution time</h4>
+        <h2 class="overviewText">{{ filteredPlanet.revolution }}</h2>
       </div>
       <div class="overviewContainer">
-        <h4>radius</h4>
-        <h2>{{ filteredPlanet.radius }}</h2>
+        <h4 class="overviewText">radius</h4>
+        <h2 class="overviewText">{{ filteredPlanet.radius }}</h2>
       </div>
       <div class="overviewContainer">
-        <h4>average temp</h4>
-        <h2>{{ filteredPlanet.temperature }}</h2>
+        <h4 class="overviewText">average temp</h4>
+        <h2 class="overviewText">{{ filteredPlanet.temperature }}</h2>
       </div>
     </div>
   </section>
@@ -135,18 +135,56 @@ export default {
     },
   },
   created() {
+    console.log("created");
     this.planetOverview = this.filteredPlanet.overview.content;
     this.planetImage = this.filteredPlanet.images.planet;
     this.planetImageGeology = this.filteredPlanet.images.geology;
     this.planetURL = this.filteredPlanet.overview.source;
+  },
+  beforeCreate() {
+    console.log("before create");
+  },
+  beforeMount() {
+    console.log("beforemount");
+  },
+  mounted() {
+    console.log("PLANET DETAILS mounted");
+  },
+  beforeUpdate() {
+    console.log("beforeupdate");
+  },
+  updated() {
+    console.log("updated");
+  },
+  activated() {
+    console.log("activated");
+  },
+  deactivated() {
+    console.log("deactivated");
+  },
+  beforeUnmount() {
+    console.log("befreunmount");
+  },
+  unmounted() {
+    console.log("unmounted");
+  },
+  renderTracked() {
+    console.log("Render tracked");
+  },
+  renderTriggered() {
+    console.log("rendertriggered");
   },
 };
 </script>
 
 <style scoped>
 .overviewContainer {
-  @apply flex-col w-3/12 border border-gray-600 py-5 pl-5 m-2 pr-12 uppercase text-xs font-bold;
+  @apply flex justify-between items-center w-full text-center
+  border border-gray-600 py-5 pl-5 m-2 pr-12
+  uppercase text-xs font-bold
+  md:w-3/12 md:text-left md:flex-col md:justify-start;
 }
+
 button {
   @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2 border border-gray-600 rounded-sm
   hover:bg-purple-700 transition duration-300;
@@ -159,6 +197,7 @@ button {
 button span {
   @apply text-gray-400 font-normal pl-3 pr-6;
 }
+
 /* responsive colors
   xs:bg-yellow-200
 sm:bg-red-200

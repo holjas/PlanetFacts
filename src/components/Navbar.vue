@@ -69,7 +69,6 @@
       class="w-full md:flex md:items-center md:w-auto md:mt-3 lg:mt-0"
     >
       <div class="">
-        <!-- <ul class="xs:text-center lg:text-right"> ORIGINAL -->
         <ul class="flex flex-col mt-3 md:flex-row md:items-end lg:mt-0">
           <li
             v-for="planet in planets"
@@ -79,7 +78,7 @@
               font-bold
               px-5
               text-gray-400
-              sm:mt-4
+              xs:mt-4
               hover:text-gray-300
               transition
               duration-300

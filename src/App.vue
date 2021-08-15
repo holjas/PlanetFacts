@@ -28,7 +28,9 @@ export default {
       planets: [],
     };
   },
-
+  mounted() {
+    console.log("APP mounted");
+  },
   created() {
     this.fetchLocalData();
   },

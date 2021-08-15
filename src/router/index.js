@@ -13,6 +13,7 @@ const routes = [
     name: "PlanetDetails",
     component: PlanetDetails,
     props: true,
+    meta: { transition: "slide-left" },
   },
 ];
 
