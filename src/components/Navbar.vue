@@ -73,6 +73,7 @@
           <li
             v-for="planet in planets"
             :key="planet.name"
+            @click="toggle"
             class="
               text-xs
               font-bold
@@ -87,7 +88,7 @@
             <router-link
               :to="{
                 name: 'PlanetDetails',
-                params: { id: planet.name },
+                params: { id: planet.name }
               }"
             >
               {{ planet.name }}
@@ -104,19 +105,19 @@ export default {
   name: "Navbar",
 
   props: {
-    planets: Array,
+    planets: Array
   },
   data() {
     return {
-      hamburgerOpen: false,
-    };
+      hamburgerOpen: false
+    }
   },
   methods: {
     toggle() {
-      this.hamburgerOpen = !this.hamburgerOpen;
-    },
-  },
-};
+      this.hamburgerOpen = !this.hamburgerOpen
+    }
+  }
+}
 </script>
 
 <style scoped>

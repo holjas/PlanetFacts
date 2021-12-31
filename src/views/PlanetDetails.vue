@@ -12,7 +12,9 @@
       </div>
 
       <!-- side bar details -->
-      <div class="flex xs:flex-row xs:p-6 xs:mt-6 xl:flex-col xl:w-6/12 xl:p-3">
+      <div
+        class="flex xs:flex-col-reverse xs:p-6 xs:mt-6 md:flex-row xl:w-6/12 xl:p-3"
+      >
         <div class="xs:w-full md:w-8/12 xl:w-full">
           <h1 class="mb-6">
             {{ filteredPlanet.name }}
@@ -30,16 +32,22 @@
           </p>
         </div>
 
+        <!-- buttons -->
         <div
           class="
-            flex flex-col
-            xs:w-4/12
-            xs:mx-6
-            xs:justify-center
+       
+            xs:grid xs:grid-cols-3 xs:gap-2 xs:place-content-evenly
+
+            md:flex
+         
+           
+            md:mx-6
+            
             xl:w-full
             xl:mx-0
-            xs:hidden
-            md:flex
+ md:w-4/12
+ md:justify-center
+  md:flex-col
           "
         >
           <button
@@ -47,21 +55,21 @@
             name="overview"
             :class="[activeClass === 'overview' ? 'btn-active' : '']"
           >
-            <span>01</span>overview
+            <span class="xs:hidden md:inline ">01</span>overview
           </button>
           <button
             @click="toggleDetailView"
             name="structure"
             :class="[activeClass === 'structure' ? 'btn-active' : '']"
           >
-            <span>02</span>internal structure
+            <span class="xs:hidden md:inline ">02</span>internal structure
           </button>
           <button
             @click="toggleDetailView"
             name="geology"
             :class="[activeClass === 'geology' ? 'btn-active' : '']"
           >
-            <span>03</span>surface geology
+            <span class="xs:hidden md:inline">03</span>surface geology
           </button>
         </div>
       </div>
@@ -95,86 +103,52 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      activeClass: "overview",
-    };
+      activeClass: "overview"
+    }
   },
   props: {
-    planets: Array,
+    planets: Array
   },
   computed: {
     filteredPlanet() {
       const activePlanet = this.planets.find(
-        (x) => x.name === this.$route.params.id
-      );
-      return activePlanet;
-    },
+        x => x.name === this.$route.params.id
+      )
+      return activePlanet
+    }
   },
   methods: {
     toggleDetailView(e) {
-      const planetInfo = e.target.name;
-      this.activeClass = planetInfo;
-      this.whatClassAmI(planetInfo);
+      const planetInfo = e.target.name
+      this.activeClass = planetInfo
+      this.whatClassAmI(planetInfo)
     },
     whatClassAmI(e) {
       if (e === "overview") {
-        this.planetOverview = this.filteredPlanet.overview.content;
-        this.planetImage = this.filteredPlanet.images.planet;
-        this.planetURL = this.filteredPlanet.overview.source;
+        this.planetOverview = this.filteredPlanet.overview.content
+        this.planetImage = this.filteredPlanet.images.planet
+        this.planetURL = this.filteredPlanet.overview.source
       }
       if (e === "structure") {
-        this.planetOverview = this.filteredPlanet.structure.content;
-        this.planetImage = this.filteredPlanet.images.internal;
-        this.planetURL = this.filteredPlanet.structure.source;
+        this.planetOverview = this.filteredPlanet.structure.content
+        this.planetImage = this.filteredPlanet.images.internal
+        this.planetURL = this.filteredPlanet.structure.source
       }
       if (e === "geology") {
-        this.planetOverview = this.filteredPlanet.geology.content;
-        this.planetImage = this.filteredPlanet.images.planet;
-        this.planetImageGeology = this.filteredPlanet.images.geology;
-        this.planetURL = this.filteredPlanet.geology.source;
+        this.planetOverview = this.filteredPlanet.geology.content
+        this.planetImage = this.filteredPlanet.images.planet
+        this.planetImageGeology = this.filteredPlanet.images.geology
+        this.planetURL = this.filteredPlanet.geology.source
       }
-    },
+    }
   },
   created() {
-    console.log("created");
-    this.planetOverview = this.filteredPlanet.overview.content;
-    this.planetImage = this.filteredPlanet.images.planet;
-    this.planetImageGeology = this.filteredPlanet.images.geology;
-    this.planetURL = this.filteredPlanet.overview.source;
-  },
-  beforeCreate() {
-    console.log("before create");
-  },
-  beforeMount() {
-    console.log("beforemount");
-  },
-  mounted() {
-    console.log("PLANET DETAILS mounted");
-  },
-  beforeUpdate() {
-    console.log("beforeupdate");
-  },
-  updated() {
-    console.log("updated");
-  },
-  activated() {
-    console.log("activated");
-  },
-  deactivated() {
-    console.log("deactivated");
-  },
-  beforeUnmount() {
-    console.log("befreunmount");
-  },
-  unmounted() {
-    console.log("unmounted");
-  },
-  renderTracked() {
-    console.log("Render tracked");
-  },
-  renderTriggered() {
-    console.log("rendertriggered");
-  },
-};
+    this.planetOverview = this.filteredPlanet.overview.content
+    this.planetImage = this.filteredPlanet.images.planet
+    this.planetImageGeology = this.filteredPlanet.images.geology
+    this.planetURL = this.filteredPlanet.overview.source
+  }
+}
 </script>
 
 <style scoped>
@@ -186,8 +160,10 @@ export default {
 }
 
 button {
-  @apply text-white uppercase text-xs text-left font-bold leading-7 py-3 px-4 my-2 border border-gray-600 rounded-sm
-  hover:bg-purple-700 transition duration-300;
+  @apply text-white uppercase text-xs  font-bold leading-7 py-3 px-4 my-2 border border-gray-600 rounded-sm
+  hover:bg-purple-700 transition duration-300
+  xs:text-center
+  md:text-left;
   background: transparent;
   font-family: var(--fontBody);
 }
