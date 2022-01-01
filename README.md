@@ -22,7 +22,7 @@ Users should be able to:
 
 ### Screenshot
 
-<img src="./src/assets/destop.png" alt="desktop layout"/>
+<img src="./src/assets/desktop.png" alt="desktop layout"/>
 <img src="./src/assets/mobile-top.png" alt="mobile top layout"/>
 <img src="./src/assets/mobile-bottom.png" alt="mobile bottom layout"/>
 
